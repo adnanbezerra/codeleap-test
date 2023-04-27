@@ -1,14 +1,13 @@
 # <p align = "center"> CodeLeap front-end developer test </p>
 
 <p align="center">
-   <img src="https://www.codeleap.co.uk/static/838fbf40bc335c2ffd2ea5ee19ed3baa/f6c84/codeleap_logo_white.webp" width="250px"/>
+   <img src="https://codeleap.co.uk/static/838fbf40bc335c2ffd2ea5ee19ed3baa/f6c84/codeleap_logo_white.webp" width="250px"/>
 </p>
 
 <p align = "center">
    <img src="https://img.shields.io/badge/author-adnanbezerra-4dae71?style=flat-square" />
    <img src="https://img.shields.io/github/languages/count/adnanbezerra/codeleap-test?color=4dae71&style=flat-square" />
 </p>
-
 
 ##  :clipboard: Description
 
