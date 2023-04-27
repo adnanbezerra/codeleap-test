@@ -17,6 +17,7 @@ export const Content = styled.div`
     flex-direction: column;
     background-color: #fff;   
     align-items: center;
+    overflow-x: scroll;
 
     @media(max-width: 1100px) {
         width: 70%;
