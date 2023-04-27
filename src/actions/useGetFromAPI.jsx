@@ -3,7 +3,7 @@ import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
 function useGetFromAPI() {
-  const [data, setData] = useState(null);
+  const [data, setData] = useState([{}]);
   const [error, setError] = useState(null);
 
   useEffect(() => {
@@ -15,7 +15,7 @@ function useGetFromAPI() {
       .catch(error => {
         setError(error);
       });
-      
+
   }, []);
 
   return { data, error };
