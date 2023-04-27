@@ -13,9 +13,10 @@ export default function SignupPage() {
             <SignupFormContainer onSubmit={submitForm}>
                 <SignupFormTitle>Welcome to CodeLeap network!</SignupFormTitle>
 
-                <SignupLabel>Please enter your username</SignupLabel>
+                <SignupLabel for="username">Please enter your username</SignupLabel>
                 <SignupInput 
                     type="text" 
+                    id="username"
                     placeholder="John Doe" 
                     value={username} 
                     onChange={e => setUsername(e.target.value)} 
