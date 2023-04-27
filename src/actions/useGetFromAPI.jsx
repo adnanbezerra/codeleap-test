@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
-function usePostToAPI() {
+function useGetFromAPI() {
   const [data, setData] = useState(null);
   const [error, setError] = useState(null);
 
@@ -21,4 +21,4 @@ function usePostToAPI() {
   return { data, error };
 }
 
-export default usePostToAPI;
+export default useGetFromAPI;

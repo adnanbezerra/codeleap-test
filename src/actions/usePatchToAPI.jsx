@@ -2,7 +2,7 @@ import { useState, useEffect } from 'react';
 import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
-function usePatchFromAPI(objectId, requestData) {
+function usePatchToAPI(objectId, requestData) {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
@@ -22,4 +22,4 @@ function usePatchFromAPI(objectId, requestData) {
   return { loading, error };
 }
 
-export default usePatchFromAPI;
+export default usePatchToAPI;
