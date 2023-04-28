@@ -1,7 +1,7 @@
 import { combineReducers } from "redux";
 
 const initialState = {
-  username: null,
+  username: {},
 };
   
 const usernameReducer = (state = initialState, action) => {
