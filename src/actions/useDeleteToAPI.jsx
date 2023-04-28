@@ -9,7 +9,7 @@ function useDeleteToAPI() {
   function deleteToApi(objectId) {
     setLoading(true);
 
-    axios.post(`${API_URL}/carrers/${objectId}/`, )
+    axios.post(`${API_URL}/careers/${objectId}/`, )
       .then(() => {
         setLoading(false);
       })

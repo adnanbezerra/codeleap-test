@@ -9,7 +9,7 @@ function usePatchToAPI() {
   function patchToApi(objectId, requestData) {
     setLoading(true);
 
-    axios.post(`${API_URL}/carrers/${objectId}/`, requestData)
+    axios.post(`${API_URL}/careers/${objectId}/`, requestData)
       .then(() => {
         setLoading(false);
       })

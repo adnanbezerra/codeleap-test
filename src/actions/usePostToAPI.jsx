@@ -9,7 +9,7 @@ function usePostToAPI() {
   function postToApi(requestData) {
     setLoading(true);
 
-    axios.post(`${API_URL}/carrers/`, requestData)
+    axios.post(`${API_URL}/careers/`, requestData)
       .then(() => {
         setLoading(false);
       })
