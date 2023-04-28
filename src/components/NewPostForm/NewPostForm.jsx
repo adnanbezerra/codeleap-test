@@ -4,12 +4,11 @@ import usePostToAPI from "../../actions/usePostToAPI";
 import { useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 
-// eslint-disable-next-line react/prop-types
 export default function NewPostForm() {
     const [title, setTitle] = useState("");
     const [content, setContent] = useState("");
     const isEmpty = title === "" || content === "";
-    const { error, postToApi} = usePostToAPI();
+    const { error, postToApi } = usePostToAPI();
     const { username } = useSelector(state => state.username);
     const navigate = useNavigate();
 
@@ -22,7 +21,7 @@ export default function NewPostForm() {
         }
 
         postToApi(payload);
-        if(error) alert("There was some problem!");
+        if (error) alert("There was some problem!");
 
         setTitle("");
         setContent("");
@@ -43,7 +42,7 @@ export default function NewPostForm() {
             />
 
             <FormLabel htmlFor="content">Content</FormLabel>
-            <FormContentInput 
+            <FormContentInput
                 type="text"
                 id="content"
                 placeholder="Content here"
@@ -52,10 +51,10 @@ export default function NewPostForm() {
             />
 
             <FormButtonRow>
-                <FormButton 
+                <FormButton
                     onClick={submitForm}
                     disabled={isEmpty}
-                    isEmpty={isEmpty}    
+                    isEmpty={isEmpty}
                 >Create</FormButton>
             </FormButtonRow>
         </Container>

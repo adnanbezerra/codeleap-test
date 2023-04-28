@@ -12,11 +12,11 @@ export default function SignupPage() {
     const usernameFromLocalStorage = localStorage.getItem("username");
 
     useEffect(() => {
-        if(JSON.stringify(username) !== JSON.stringify({}) || usernameFromLocalStorage) {
+        if (JSON.stringify(username) !== JSON.stringify({}) || usernameFromLocalStorage) {
             navigate("/timeline", { replace: true });
         }
 
-    // eslint-disable-next-line react-hooks/exhaustive-deps
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, []);
 
     function submitForm(e) {
@@ -24,7 +24,7 @@ export default function SignupPage() {
 
         dispatch(setUsernameRedux(loginUsername));
         localStorage.setItem("username", loginUsername);
-        navigate("/timeline", {replace: true});
+        navigate("/timeline", { replace: true });
     }
 
     return (
@@ -33,16 +33,16 @@ export default function SignupPage() {
                 <SignupFormTitle>Welcome to CodeLeap network!</SignupFormTitle>
 
                 <SignupLabel htmlFor="username">Please enter your username</SignupLabel>
-                <SignupInput 
-                    type="text" 
+                <SignupInput
+                    type="text"
                     id="username"
-                    placeholder="John Doe" 
-                    value={loginUsername} 
-                    onChange={e => setLoginUsername(e.target.value)} 
+                    placeholder="John Doe"
+                    value={loginUsername}
+                    onChange={e => setLoginUsername(e.target.value)}
                 />
-                
+
                 <SignupButtonRow>
-                    <SignupButton 
+                    <SignupButton
                         isEmpty={username.length === 0}
                         disabled={username.length === 0}
                     >

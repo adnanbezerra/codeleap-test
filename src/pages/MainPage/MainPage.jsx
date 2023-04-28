@@ -16,8 +16,8 @@ export default function MainPage() {
     const dispatch = useDispatch();
 
     useEffect(() => {
-        if(JSON.stringify(username) === JSON.stringify({})) {
-            navigate("/", {replace: true});
+        if (JSON.stringify(username) === JSON.stringify({})) {
+            navigate("/", { replace: true });
         }
 
         if (JSON.stringify(data) !== JSON.stringify([{}])) {
