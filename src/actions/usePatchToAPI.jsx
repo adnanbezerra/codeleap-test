@@ -1,25 +1,25 @@
-import { useState, useEffect } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 import { API_URL } from '../mock/apiUrl';
 
-function usePatchToAPI(objectId, requestData) {
+function usePatchToAPI() {
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
 
-  useEffect(async () => {
+  function patchToApi(objectId, requestData) {
     setLoading(true);
 
     axios.post(`${API_URL}/carrers/${objectId}/`, requestData)
-      .then(reponse => {
+      .then(() => {
         setLoading(false);
       })
       .catch(error => {
         setError(error);
       });
 
-  }, [requestData]);
+  }
 
-  return { loading, error };
+  return { loading, error, patchToApi };
 }
 
 export default usePatchToAPI;
