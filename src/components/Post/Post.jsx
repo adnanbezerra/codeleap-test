@@ -1,6 +1,5 @@
 import { Container, PastTime, PostContent, PostTitle, PostTitleContent, Username, UsernameRow } from "./PostStyles";
 
-// eslint-disable-next-line react/prop-types
 export default function Post({ username, created_datetime, title, content }) {
 
   function calcPastTime(time) {
@@ -37,4 +36,11 @@ export default function Post({ username, created_datetime, title, content }) {
       </PostContent>
     </Container>
   )
+}
+
+Post.propTypes = {
+  username: String.required,
+  created_datetime: Date.required,
+  title: String.required,
+  content: String.required,
 }
