@@ -12,6 +12,10 @@ export default function SignupPage() {
     const usernameFromLocalStorage = localStorage.getItem("username");
 
     useEffect(() => {
+        if(usernameFromLocalStorage) {
+            dispatch(setUsernameRedux(usernameFromLocalStorage));
+        }
+
         if (JSON.stringify(username) !== JSON.stringify({}) || usernameFromLocalStorage) {
             navigate("/timeline", { replace: true });
         }
