@@ -9,13 +9,11 @@ import { useNavigate } from "react-router-dom";
 export default function MainPage() {
     const { data } = useGetFromAPI();
     const [posts, setPosts] = useState([]);
-    const username = useSelector(state => state.username);
+    const { username } = useSelector(state => state.username);
     const navigate = useNavigate();
 
-    console.log(username);
-
     useEffect(() => {
-        if(!username) {
+        if(JSON.stringify(username) === JSON.stringify(null)) {
             navigate("/", {replace: true});
         }
 

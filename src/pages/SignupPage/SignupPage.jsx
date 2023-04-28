@@ -1,11 +1,20 @@
 import { useState } from "react";
 import { Container, SignupButton, SignupButtonRow, SignupFormContainer, SignupFormTitle, SignupInput, SignupLabel } from "./SignupPageStyles";
+import { useNavigate } from "react-router-dom";
+import { useDispatch } from "react-redux";
+import { setUsernameRedux } from "../../actions/setUsername";
 
 export default function SignupPage() {
     const [username, setUsername] = useState("");
+    const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     function submitForm(e) {
         e.preventDefault();
+
+        dispatch(setUsernameRedux(username));
+        localStorage.setItem("username", username);
+        navigate("/timeline", {replace: true});
     }
 
     return (
@@ -13,7 +22,7 @@ export default function SignupPage() {
             <SignupFormContainer onSubmit={submitForm}>
                 <SignupFormTitle>Welcome to CodeLeap network!</SignupFormTitle>
 
-                <SignupLabel for="username">Please enter your username</SignupLabel>
+                <SignupLabel htmlFor="username">Please enter your username</SignupLabel>
                 <SignupInput 
                     type="text" 
                     id="username"
