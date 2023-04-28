@@ -1,14 +1,24 @@
-import NewPostForm from "../../components/NewPostForm.jsx/NewPostForm";
+import NewPostForm from "../../components/NewPostForm/NewPostForm";
 import { Container, Content, Title, TitleDiv } from "./MainPageStyles";
 import useGetFromAPI from "../../actions/useGetFromAPI";
 import Post from "../../components/Post/Post";
 import { useEffect, useState } from "react";
+import { useSelector } from "react-redux";
+import { useNavigate } from "react-router-dom";
 
 export default function MainPage() {
     const { data } = useGetFromAPI();
     const [posts, setPosts] = useState([]);
+    const username = useSelector(state => state.username);
+    const navigate = useNavigate();
+
+    console.log(username);
 
     useEffect(() => {
+        if(!username) {
+            navigate("/", {replace: true});
+        }
+
         if (JSON.stringify(data) !== JSON.stringify([{}])) {
             setPosts(data.results)
         }
