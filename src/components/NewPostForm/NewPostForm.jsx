@@ -24,7 +24,7 @@ export default function NewPostForm() {
         <Container onSubmit={submitForm}>
             <FormTitle>What's on your mind?</FormTitle>
 
-            <FormLabel for="title">Title</FormLabel>
+            <FormLabel htmlFor="title">Title</FormLabel>
             <FormTitleInput
                 type="text"
                 id="title"
@@ -33,7 +33,7 @@ export default function NewPostForm() {
                 onChange={e => setTitle(e.target.value)}
             />
 
-            <FormLabel for="content">Content</FormLabel>
+            <FormLabel htmlFor="content">Content</FormLabel>
             <FormContentInput 
                 type="text"
                 id="content"
