@@ -1,19 +1,29 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Container, SignupButton, SignupButtonRow, SignupFormContainer, SignupFormTitle, SignupInput, SignupLabel } from "./SignupPageStyles";
 import { useNavigate } from "react-router-dom";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setUsernameRedux } from "../../actions/setUsername";
 
 export default function SignupPage() {
-    const [username, setUsername] = useState("");
+    const [loginUsername, setLoginUsername] = useState("");
     const navigate = useNavigate();
     const dispatch = useDispatch();
+    const { username } = useSelector(state => state.username);
+    const usernameFromLocalStorage = localStorage.getItem("username");
+
+    useEffect(() => {
+        if(JSON.stringify(username) !== JSON.stringify({}) || usernameFromLocalStorage) {
+            navigate("/timeline", { replace: true });
+        }
+
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    }, []);
 
     function submitForm(e) {
         e.preventDefault();
 
-        dispatch(setUsernameRedux(username));
-        localStorage.setItem("username", username);
+        dispatch(setUsernameRedux(loginUsername));
+        localStorage.setItem("username", loginUsername);
         navigate("/timeline", {replace: true});
     }
 
@@ -27,8 +37,8 @@ export default function SignupPage() {
                     type="text" 
                     id="username"
                     placeholder="John Doe" 
-                    value={username} 
-                    onChange={e => setUsername(e.target.value)} 
+                    value={loginUsername} 
+                    onChange={e => setLoginUsername(e.target.value)} 
                 />
                 
                 <SignupButtonRow>

@@ -3,17 +3,20 @@ import { Container, Content, Title, TitleDiv } from "./MainPageStyles";
 import useGetFromAPI from "../../actions/useGetFromAPI";
 import Post from "../../components/Post/Post";
 import { useEffect, useState } from "react";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
+import { FiLogOut } from "react-icons/fi";
+import { setUsernameRedux } from "../../actions/setUsername";
 
 export default function MainPage() {
     const { data } = useGetFromAPI();
     const [posts, setPosts] = useState([]);
     const { username } = useSelector(state => state.username);
     const navigate = useNavigate();
+    const dispatch = useDispatch();
 
     useEffect(() => {
-        if(JSON.stringify(username) === JSON.stringify(null)) {
+        if(JSON.stringify(username) === JSON.stringify({})) {
             navigate("/", {replace: true});
         }
 
@@ -39,11 +42,18 @@ export default function MainPage() {
         )
     }
 
+    function logout() {
+        localStorage.clear();
+        dispatch(setUsernameRedux({}));
+        navigate("/", { replace: true });
+    }
+
     return (
         <Container>
             <Content>
                 <TitleDiv>
                     <Title>CodeLeap Network</Title>
+                    <FiLogOut onClick={logout} />
                 </TitleDiv>
 
                 <NewPostForm />

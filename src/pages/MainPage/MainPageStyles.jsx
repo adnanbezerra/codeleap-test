@@ -26,15 +26,16 @@ export const Content = styled.div`
 
 export const TitleDiv = styled.div`
     background-color: #7695EC;
-    padding-left: 37px;
-    height: 80px;
+    padding: 27px 37px;
     width: 100%;
     display: flex;
     align-items: center;
     box-sizing: border-box;
+    justify-content: space-between;
+    color: white;
+    font-size: 22px;
 `
 
 export const Title = styled.h1`
-    color: white;
-    font-size: 22px;
+
 `
