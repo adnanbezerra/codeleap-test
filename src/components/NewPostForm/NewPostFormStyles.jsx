@@ -61,12 +61,12 @@ export const FormTitleInput = styled.input`
     border-radius: 8px;
     padding-left: 10px;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 
     ::placeholder {
-        font-size: 14px;
         color: #CCCCCC;
         font-weight: 400;
-        font-family: 'Roboto', sans-serif;
     }
 `
 
@@ -78,11 +78,11 @@ export const FormContentInput = styled.textarea`
     padding-left: 10px;
     padding-top: 10px;
     box-sizing: border-box;
+    font-family: 'Roboto', sans-serif;
+    font-size: 14px;
 
     ::placeholder {
-        font-size: 14px;
         color: #CCCCCC;
         font-weight: 400;
-        font-family: 'Roboto', sans-serif;
     }
 `
