@@ -32,6 +32,7 @@ export default function MainPage() {
                 return (
                     <Post
                         key={entry.id}
+                        id={entry.id}
                         postOwnerUsername={entry.username}
                         created_datetime={entry.created_datetime}
                         title={entry.title}
