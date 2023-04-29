@@ -1,6 +1,15 @@
+import { useState } from "react";
 import { Container, PastTime, PostContent, PostTitle, PostTitleContent, Username, UsernameRow } from "./PostStyles";
+import { BiEdit } from "react-icons/bi";
+import { MdDeleteForever } from "react-icons/md";
+import { useSelector } from "react-redux";
+import DeletePostModal from "../DeletePostModal/DeletePostModal";
+import EditPostModal from "../EditPostModal/EditPostModal";
 
-export default function Post({ username, created_datetime, title, content }) {
+export default function Post({ id, postOwnerUsername, created_datetime, title, content }) {
+  const [isDeleteOpen, setIsDeleteOpen] = useState(false);
+  const [isEditOpen, setIsEditOpen] = useState(false);
+  const { username } = useSelector(state => state.username);
 
   function calcPastTime(time) {
     const timeMark = new Date(time);
@@ -17,6 +26,31 @@ export default function Post({ username, created_datetime, title, content }) {
     }
   }
 
+  function getEditDeleteIcons() {
+    return postOwnerUsername === username ?
+      <div style={{ display: 'flex', color: '#fff', fontSize: '28px' }}>
+        <MdDeleteForever
+          onClick={() => setIsDeleteOpen(true)}
+          style={{ marginRight: '16px' }}
+        />
+        <DeletePostModal
+          isOpen={isDeleteOpen}
+          setIsOpen={setIsDeleteOpen}
+          objectId={id}
+        />
+        <BiEdit
+          onClick={() => setIsEditOpen(true)}
+        />
+        <EditPostModal
+          isOpen={isEditOpen}
+          setIsOpen={setIsEditOpen}
+          objectId={id}
+        />
+      </div>
+      :
+      <div></div>
+  }
+
   return (
     <Container>
       <PostTitleContent>
@@ -24,12 +58,14 @@ export default function Post({ username, created_datetime, title, content }) {
           {title}
         </PostTitle>
 
-        <div></div>
+        <div>
+          {getEditDeleteIcons()}
+        </div>
       </PostTitleContent>
 
       <PostContent>
         <UsernameRow>
-          <Username>@{username}</Username>
+          <Username>@{postOwnerUsername}</Username>
           <PastTime>{calcPastTime(created_datetime)}</PastTime>
         </UsernameRow>
         {content}
@@ -39,7 +75,8 @@ export default function Post({ username, created_datetime, title, content }) {
 }
 
 Post.propTypes = {
-  username: String.required,
+  id: Number.required,
+  postOwnerUsername: String.required,
   created_datetime: Date.required,
   title: String.required,
   content: String.required,
